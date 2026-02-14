@@ -1,0 +1,18 @@
+# R / renv
+renv/library/
+renv/staging/
+.Rhistory
+.RData
+.Ruserdata
+
+# Outputs
+dndscv_R_analysis_output/
+*_output/
+results/
+plots/
+
+
+# Data (ignore all, but keep scaffold folder)
+data/*
+!data/user_vcf/
+!data/user_vcf/.gitkeep

@@ -67,15 +67,38 @@ Restore the R environment (first time only):
 R -q -e "install.packages('renv'); renv::restore(prompt=FALSE)"
 ```
 
-Run the pipeline on VCFs:
+## Preparing your VCF folder
+
+Copy your own VCF files (multiple samples or VCFs from a cohort study is also acceptable) into the user_vcf folder.  
+For example:
+
+```bash
+cp /path/to/your/*.vcf.gz data/user_vcf/
+cp /path/to/your/*.vcf.gz.tbi data/user_vcf/   # if you have them
+
+```
+
+> **Note:** Replace `/path/to/your/` with your actual VCF files path
+
+And note:
+
+Input VCFs should be .vcf.gz (bgzipped)
+
+Index .tbi is recommended (bcftools often works without it, but indexing is best)
+
+Once your files are in place, you can run the pipeline on VCFs:
+
 ```bash
 Rscript dndscv_R_analysis.R \
-  --vcf-glob "data/vcfs/*.vcf.gz" \
+  --vcf-glob "data/user_vcf/*.vcf.gz" \
   --outdir dndscv_R_prep_output \
   --write-qc \
   --write-plots \
   --write-shiny
 ```
+
+
+ The `dndscv_R_prep_output/` folder will be created automatically when the pipeline runs.
 
 Outputs:
 ```text
